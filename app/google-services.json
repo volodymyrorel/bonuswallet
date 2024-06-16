@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "578685978125",
+    "project_id": "bonuswallet-cbe35",
+    "storage_bucket": "bonuswallet-cbe35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578685978125:android:974ada896ebcbe840e3744",
+        "android_client_info": {
+          "package_name": "uzhnu.deagle21.bonuswallet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDROX9tsXYBAgt3QQldVoD_KaVwAef-vfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
