@@ -11,26 +11,57 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import uzhnu.deagle21.bonuswallet.ui.LogInScreen
+import uzhnu.deagle21.bonuswallet.ui.MainScreen
+import uzhnu.deagle21.bonuswallet.ui.SignUpScreen
+import uzhnu.deagle21.bonuswallet.ui.logInRoute
+import uzhnu.deagle21.bonuswallet.ui.mainRoute
+import uzhnu.deagle21.bonuswallet.ui.signUpRoute
 import uzhnu.deagle21.bonuswallet.ui.theme.BonusWalletTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Write a message to the database
-        val database = Firebase.database
-        val myRef = database.getReference("message")
-
-        myRef.setValue("Hello, World! 2")
-        enableEdgeToEdge()
+//        val database = Firebase.database
+//        val myRef = database.getReference("message")
+//
+//        myRef.setValue("Hello, World! 3")
+//        val fs = Firebase.firestore
+//        fs.collection("books")
+//            .document("book1").set(mapOf("title" to "Bible 2"))
+//        enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
+            var startDestination = logInRoute
+            if (Firebase.auth.currentUser != null) startDestination = mainRoute
             BonusWalletTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                NavHost(
+                    navController = navController,
+                    startDestination = startDestination
+                ) {
+                    composable(logInRoute) {
+                        LogInScreen(
+                            onSignUpClick = {
+                                navController.navigate(signUpRoute)
+                            },
+                            onLogIn = {
+                                navController.navigate(mainRoute)
+                            })
+                    }
+                    composable(signUpRoute) {
+                        SignUpScreen()
+                    }
+                    composable(mainRoute) {
+                        MainScreen()
+                    }
                 }
             }
         }

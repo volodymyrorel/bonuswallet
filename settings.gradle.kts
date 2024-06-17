@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "BonusWallet"
 include(":app")
- 
+include(":navigation")
