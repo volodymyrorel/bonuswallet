@@ -29,15 +29,6 @@ import uzhnu.deagle21.bonuswallet.ui.theme.BonusWalletTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Write a message to the database
-//        val database = Firebase.database
-//        val myRef = database.getReference("message")
-//
-//        myRef.setValue("Hello, World! 3")
-//        val fs = Firebase.firestore
-//        fs.collection("books")
-//            .document("book1").set(mapOf("title" to "Bible 2"))
-//        enableEdgeToEdge()
         setContent {
             val navController = rememberNavController()
             var startDestination = logInRoute
@@ -57,10 +48,18 @@ class MainActivity : ComponentActivity() {
                             })
                     }
                     composable(signUpRoute) {
-                        SignUpScreen()
+                        SignUpScreen(
+                            onSignUpClick = {
+                                navController.navigate(mainRoute)
+                            }
+                        )
                     }
                     composable(mainRoute) {
-                        MainScreen()
+                        MainScreen(
+                            onLogOutClick = {
+                                navController.navigate(logInRoute)
+                            }
+                        )
                     }
                 }
             }

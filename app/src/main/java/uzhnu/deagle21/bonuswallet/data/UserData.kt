@@ -6,6 +6,6 @@ data class UserData(
     val email: String = "",
     val name: String = "",
     val createDate: String = LocalDate.now().toString(),
-    val isAdmin: Boolean = false,
+    val admin: Boolean = false,
     val bonusCount: Int = 0
 )
