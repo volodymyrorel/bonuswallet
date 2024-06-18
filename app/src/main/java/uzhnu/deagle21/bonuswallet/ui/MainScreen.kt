@@ -1,17 +1,9 @@
 package uzhnu.deagle21.bonuswallet.ui
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -25,16 +17,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import uzhnu.deagle21.bonuswallet.R
 
 const val mainRoute = "mainRoute"
 
@@ -47,7 +39,7 @@ fun MainScreen(onLogOutClick: () -> Unit = {}) {
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "BonusWallet",
+                        text = stringResource(id = R.string.app_name),
                         fontWeight = FontWeight.SemiBold
                     )
                 },
@@ -64,7 +56,7 @@ fun MainScreen(onLogOutClick: () -> Unit = {}) {
                     selected = currentDestination?.route == actionsRoute,
                     onClick = { innerNavController.navigate(actionsRoute) },
                     label = {
-                        Text(text = "Actions")
+                        Text(text = stringResource(id = R.string.actions))
                     },
                     icon = {
                         Icon(
@@ -77,7 +69,7 @@ fun MainScreen(onLogOutClick: () -> Unit = {}) {
                     selected = currentDestination?.route == profileRoute,
                     onClick = { innerNavController.navigate(profileRoute) },
                     label = {
-                        Text(text = "Profile")
+                        Text(text = stringResource(id = R.string.profile))
                     },
                     icon = {
                         Icon(
@@ -106,7 +98,11 @@ fun MainScreen(onLogOutClick: () -> Unit = {}) {
                     onLogOutClick = onLogOutClick
                 )
             }
-            composable("$operationRoute/{email}", listOf(navArgument("email"){type = NavType.StringType})) { backStackEntry ->
+            composable("$operationRoute/{email}",
+                listOf(navArgument("email") {
+                    type = NavType.StringType
+                })
+            ) { backStackEntry ->
                 OperationScreen(
                     targetEmail = backStackEntry.arguments?.getString("email").toString(),
                     onButtonClicked = {

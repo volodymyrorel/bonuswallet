@@ -28,6 +28,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -81,7 +82,7 @@ fun LogInScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Log In to your Account",
+            text = stringResource(id = R.string.log_in_to_account),
             fontSize = 22.sp,
             fontWeight = FontWeight.SemiBold
         )
@@ -92,7 +93,7 @@ fun LogInScreen(
                 emailState.value = newValue
             },
             label = {
-                Text(text = "Email")
+                Text(text = stringResource(id = R.string.email))
             },
             singleLine = true,
             modifier = Modifier.width(280.dp)
@@ -104,7 +105,7 @@ fun LogInScreen(
                 passwordState.value = newValue
             },
             label = {
-                Text(text = "Password")
+                Text(text = stringResource(id = R.string.password))
             },
             singleLine = true,
             trailingIcon = {
@@ -135,7 +136,7 @@ fun LogInScreen(
                 containerColor = MaterialTheme.colorScheme.primary
             )
         ) {
-            Text(text = "Log In")
+            Text(text = stringResource(id = R.string.log_in))
         }
         Spacer(modifier = Modifier.height(36.dp))
         Row(
@@ -143,7 +144,7 @@ fun LogInScreen(
             horizontalArrangement = Arrangement.Center
         ) {
             Spacer(modifier = Modifier.width(26.dp))
-            Text(text = "Don't have an account?")
+            Text(text = stringResource(id = R.string.no_account))
             Spacer(modifier = Modifier.width(26.dp))
             Button(
                 onClick = {
@@ -158,20 +159,24 @@ fun LogInScreen(
                     containerColor = Color.Transparent
                 )
             ) {
-                Text(text = "Sign Up")
+                Text(text = stringResource(id = R.string.sign_up))
             }
         }
     }
 }
 
-private fun logIn(auth: FirebaseAuth, email: String, password: String, loggedIn: () -> Unit = {}) {
+private fun logIn(
+    auth: FirebaseAuth,
+    email: String,
+    password: String,
+    loggedIn: () -> Unit = {}
+) {
     auth.signInWithEmailAndPassword(email, password)
         .addOnCompleteListener {
             if (it.isSuccessful) {
                 Log.d("myLogs", "LogIn Successful!")
                 loggedIn()
-            }
-            else Log.d("myLogs", "LogIn Failed!")
+            } else Log.d("myLogs", "LogIn Failed!")
         }
 }
 

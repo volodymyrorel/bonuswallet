@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import uzhnu.deagle21.bonuswallet.R
 import uzhnu.deagle21.bonuswallet.data.UserData
 
 const val operationRoute = "operationRoute"
@@ -109,7 +111,7 @@ fun OperationScreen(
                 keyboardType = KeyboardType.Number
             ),
             label = {
-                Text(text = "Enter amount of bonuses")
+                Text(text = stringResource(id = R.string.enter_bonus_amount))
             },
             modifier = Modifier.fillMaxWidth()
         )
@@ -137,12 +139,14 @@ fun OperationScreen(
                             onButtonClicked()
                         } else
                             Toast.makeText(
-                                context, "Not enough bonuses to take", Toast.LENGTH_SHORT
+                                context,
+                                context.getString(R.string.not_enough_bonuses_to_take),
+                                Toast.LENGTH_SHORT
                             ).show()
                     },
                     modifier = Modifier.weight(5F)
                 ) {
-                    Text(text = "Take Bonuses")
+                    Text(text = stringResource(id = R.string.take_bonuses))
                 }
                 Spacer(modifier = Modifier.weight(0.5F))
                 Button(
@@ -163,12 +167,14 @@ fun OperationScreen(
                             onButtonClicked()
                         } else
                             Toast.makeText(
-                                context, "Not enough bonuses to add", Toast.LENGTH_SHORT
+                                context,
+                                context.getString(R.string.not_enough_bonuses_to_add),
+                                Toast.LENGTH_SHORT
                             ).show()
                     },
                     modifier = Modifier.weight(5F)
                 ) {
-                    Text(text = "Add Bonuses")
+                    Text(text = stringResource(id = R.string.add_bonuses))
                 }
             } else {
                 Button(
@@ -188,7 +194,9 @@ fun OperationScreen(
                                                 )
                                             )
                                     Toast.makeText(
-                                        context, "Operation is Successful", Toast.LENGTH_SHORT
+                                        context,
+                                        context.getString(R.string.operation_success),
+                                        Toast.LENGTH_SHORT
                                     ).show()
                                 }
                             firestore.collection("users")
@@ -203,17 +211,21 @@ fun OperationScreen(
                                                 )
                                             )
                                     Toast.makeText(
-                                        context, "Operation is successful", Toast.LENGTH_SHORT
+                                        context,
+                                        context.getString(R.string.operation_success),
+                                        Toast.LENGTH_SHORT
                                     ).show()
                                 }
                             onButtonClicked()
                         } else
                             Toast.makeText(
-                                context, "Not enough bonuses to send", Toast.LENGTH_SHORT
+                                context,
+                                context.getString(R.string.not_enough_bonuses_to_send),
+                                Toast.LENGTH_SHORT
                             ).show()
                     },
                 ) {
-                    Text(text = "Send Bonuses")
+                    Text(text = stringResource(id = R.string.send_bonuses))
                 }
             }
         }

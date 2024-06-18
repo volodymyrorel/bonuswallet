@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">BonusWallet</string>
+    <string name="actions">Actions</string>
+    <string name="profile">Profile</string>
+    <string name="enter_bonus_amount">Enter amount of bonuses</string>
+    <string name="not_enough_bonuses_to_take">Not enough bonuses to take</string>
+    <string name="not_enough_bonuses_to_add">Not enough bonuses to add</string>
+    <string name="not_enough_bonuses_to_send">Not enough bonuses to send</string>
+    <string name="proper_values">Enter proper values</string>
+    <string name="take_bonuses">Take Bonuses</string>
+    <string name="add_bonuses">Add Bonuses</string>
+    <string name="send_bonuses">Send Bonuses</string>
+    <string name="operation_success">Operation is Successful</string>
+    <string name="admin">Admin</string>
+    <string name="member">Member</string>
+    <string name="role">Role:\ </string>
+    <string name="joined">Joined on:\ </string>
+    <string name="bonuses">Bonuses:\ </string>
+    <string name="log_in">Log In</string>
+    <string name="log_out">Log Out</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in_to_account">Log In to your Account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="password_repeat">Password (repeat)</string>
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="sign_up_to_wallet">Sign Up to BonusWallet</string>
 </resources>

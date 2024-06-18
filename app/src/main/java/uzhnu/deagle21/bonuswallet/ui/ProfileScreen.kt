@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import uzhnu.deagle21.bonuswallet.R
 import uzhnu.deagle21.bonuswallet.data.UserData
 
 const val profileRoute = "profileRoute"
@@ -44,6 +46,9 @@ fun ProfileScreen(onLogOutClick: () -> Unit = {}) {
     if (currentUserData.isNotEmpty()) {
         currentUser = currentUserData[0]
     }
+    val role =
+        if (currentUser.admin) stringResource(id = R.string.admin)
+        else stringResource(id = R.string.member)
 
     Column(
         modifier = Modifier
@@ -52,24 +57,39 @@ fun ProfileScreen(onLogOutClick: () -> Unit = {}) {
             .padding(start = 16.dp)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
-        Text(text = currentUser.name,
+        Text(
+            text = currentUser.name,
             fontSize = 36.sp,
-            fontWeight = FontWeight.SemiBold)
-        Spacer(modifier = Modifier.height(20.dp))
-        Text(text = currentUser.email,
-            fontSize = 18.sp)
+            fontWeight = FontWeight.SemiBold
+        )
+        Spacer(modifier = Modifier.height(5.dp))
+        Text(
+            text = stringResource(id = R.string.role) + role,
+            fontSize = 18.sp
+        )
+        Spacer(modifier = Modifier.height(25.dp))
+        Text(
+            text = currentUser.email,
+            fontSize = 18.sp
+        )
         Spacer(modifier = Modifier.height(10.dp))
-        Text(text = "Joined on: ${currentUser.createDate}",
-            fontSize = 18.sp)
+        Text(
+            text = stringResource(id = R.string.joined) + currentUser.createDate,
+            fontSize = 18.sp
+        )
         Spacer(modifier = Modifier.height(24.dp))
-        Text(text = "Bonuses: ${currentUser.bonusCount}",
-            fontSize = 26.sp)
-        Spacer(modifier = Modifier.height(400.dp))
+        Text(
+            text =
+            if (currentUser.admin) ""
+            else stringResource(id = R.string.bonuses) + currentUser.bonusCount,
+            fontSize = 26.sp
+        )
+        Spacer(modifier = Modifier.height(350.dp))
         Button(onClick = {
             Firebase.auth.signOut()
             onLogOutClick()
         }) {
-            Text(text = "Log Out")
+            Text(text = stringResource(id = R.string.log_out))
         }
     }
 }

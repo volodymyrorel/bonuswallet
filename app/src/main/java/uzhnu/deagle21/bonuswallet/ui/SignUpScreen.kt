@@ -28,6 +28,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -91,7 +92,7 @@ fun SignUpScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Sign Up to BonusWallet",
+            text = stringResource(id = R.string.sign_up_to_wallet),
             fontSize = 22.sp,
             fontWeight = FontWeight.SemiBold
         )
@@ -103,7 +104,7 @@ fun SignUpScreen(
                 nameState.value = newValue
             },
             label = {
-                Text(text = "Name")
+                Text(text = stringResource(id = R.string.name))
             },
             singleLine = true,
             modifier = Modifier.width(280.dp)
@@ -116,7 +117,7 @@ fun SignUpScreen(
                 emailState.value = newValue
             },
             label = {
-                Text(text = "Email")
+                Text(text = stringResource(id = R.string.email))
             },
             singleLine = true,
             modifier = Modifier.width(280.dp)
@@ -129,7 +130,7 @@ fun SignUpScreen(
                 passwordState.value = newValue
             },
             label = {
-                Text(text = "Password")
+                Text(text = stringResource(id = R.string.password))
             },
             singleLine = true,
             trailingIcon = {
@@ -157,7 +158,7 @@ fun SignUpScreen(
                 passwordRepeatState.value = newValue
             },
             label = {
-                Text(text = "Password (repeat)")
+                Text(text = stringResource(id = R.string.password_repeat))
             },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
@@ -185,14 +186,17 @@ fun SignUpScreen(
                                 admin = false
                             )
                         )
-                }
-                else Toast.makeText(context, "Enter proper values", Toast.LENGTH_SHORT).show()
+                } else Toast.makeText(
+                    context,
+                    context.getString(R.string.proper_values),
+                    Toast.LENGTH_SHORT
+                ).show()
             },
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.primary
             )
         ) {
-            Text(text = "Sign Up")
+            Text(text = stringResource(id = R.string.sign_up))
         }
     }
 }
@@ -205,14 +209,18 @@ fun SignUpScreenPreview() {
     )
 }
 
-private fun signUp(auth: FirebaseAuth, email: String, password: String, onSignUpClick: () -> Unit) {
+private fun signUp(
+    auth: FirebaseAuth,
+    email: String,
+    password: String,
+    onSignUpClick: () -> Unit
+) {
     auth.createUserWithEmailAndPassword(email, password)
         .addOnCompleteListener {
             if (it.isSuccessful) {
                 Log.d("myLogs", "Sign Up Successful!")
                 onSignUpClick()
-            }
-            else {
+            } else {
                 Log.d("myLogs", "Sign Up Failed!")
             }
         }

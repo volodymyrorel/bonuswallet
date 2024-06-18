@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BonusWallet</string>
+    <string name="actions">Дії</string>
+    <string name="profile">Профіль</string>
+    <string name="enter_bonus_amount">Введіть кількість бонусів</string>
+    <string name="not_enough_bonuses_to_take">Недостатньо бонусів для зняття</string>
+    <string name="not_enough_bonuses_to_add">Недостатньо бонусів для поповнення</string>
+    <string name="not_enough_bonuses_to_send">Недостатньо бонусів для відправки</string>
+    <string name="proper_values">Введіть правильні значення</string>
+    <string name="take_bonuses">Зняти</string>
+    <string name="add_bonuses">Поповнити</string>
+    <string name="send_bonuses">Відправити</string>
+    <string name="operation_success">Операція успішна</string>
+    <string name="admin">Адміністратор</string>
+    <string name="member">Учасник</string>
+    <string name="role">Роль:\ </string>
+    <string name="joined">Дата приєднання:\ </string>
+    <string name="bonuses">Бонуси:\ </string>
+    <string name="log_in">Увійти</string>
+    <string name="log_out">Вийти</string>
+    <string name="sign_up">Зареєструватись</string>
+    <string name="log_in_to_account">Увійдіть у свій акаунт</string>
+    <string name="email">Електронна пошта</string>
+    <string name="password">Пароль</string>
+    <string name="name">Ім\'я</string>
+    <string name="password_repeat">Пароль (повторіть)</string>
+    <string name="no_account">Не маєте акаунту?</string>
+    <string name="sign_up_to_wallet">Заруєструєтесь до BonusWallet</string>
+</resources>
