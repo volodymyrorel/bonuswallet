@@ -106,7 +106,11 @@ fun MainScreen(onLogOutClick: () -> Unit = {}) {
                 OperationScreen(
                     targetEmail = backStackEntry.arguments?.getString("email").toString(),
                     onButtonClicked = {
-                        innerNavController.navigate(actionsRoute)
+                        innerNavController.navigate(actionsRoute) {
+                            popUpTo(actionsRoute) {
+                                inclusive = true
+                            }
+                        }
                     }
                 )
             }

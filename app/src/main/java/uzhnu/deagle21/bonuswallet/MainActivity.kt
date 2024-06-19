@@ -34,7 +34,11 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate(signUpRoute)
                             },
                             onLogIn = {
-                                navController.navigate(mainRoute)
+                                navController.navigate(mainRoute) {
+                                    popUpTo(mainRoute) {
+                                        inclusive = true
+                                    }
+                                }
                             })
                     }
                     composable(signUpRoute) {
@@ -47,7 +51,11 @@ class MainActivity : ComponentActivity() {
                     composable(mainRoute) {
                         MainScreen(
                             onLogOutClick = {
-                                navController.navigate(logInRoute)
+                                navController.navigate(logInRoute) {
+                                    popUpTo(logInRoute) {
+                                        inclusive = true
+                                    }
+                                }
                             }
                         )
                     }
