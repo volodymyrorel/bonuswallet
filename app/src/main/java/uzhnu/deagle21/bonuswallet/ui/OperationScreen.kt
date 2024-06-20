@@ -135,6 +135,11 @@ fun OperationScreen(
                                                             targetUser.bonusCount - bonusAmount
                                                 )
                                             )
+                                    Toast.makeText(
+                                        context,
+                                        context.getString(R.string.operation_success),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
                             onButtonClicked()
                         } else
@@ -163,6 +168,11 @@ fun OperationScreen(
                                                             targetUser.bonusCount + bonusAmount
                                                 )
                                             )
+                                    Toast.makeText(
+                                        context,
+                                        context.getString(R.string.operation_success),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
                             onButtonClicked()
                         } else
